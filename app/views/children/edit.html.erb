@@ -1,0 +1,109 @@
+<!-- Validation failure messages -->
+<% if @child.errors.any? %>
+  <% @child.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Child #<%= @child.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_child/<%= @child.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for last_approval -->
+      <div class="form-group">
+        <label for="last_approval" class="control-label">
+          Last approval
+        </label>
+
+        <input type="text" id="last_approval" name="last_approval" placeholder="Last approval" class="form-control" value="<%= @child.last_approval %>">
+      </div>
+
+      <!-- Label and input for approved_thru -->
+      <div class="form-group">
+        <label for="approved_thru" class="control-label">
+          Approved thru
+        </label>
+
+        <input type="text" id="approved_thru" name="approved_thru" placeholder="Approved thru" class="form-control" value="<%= @child.approved_thru %>">
+      </div>
+
+      <!-- Label and input for last_denial -->
+      <div class="form-group">
+        <label for="last_denial" class="control-label">
+          Last denial
+        </label>
+
+        <input type="text" id="last_denial" name="last_denial" placeholder="Last denial" class="form-control" value="<%= @child.last_denial %>">
+      </div>
+
+      <!-- Label and input for last_submission -->
+      <div class="form-group">
+        <label for="last_submission" class="control-label">
+          Last submission
+        </label>
+
+        <input type="text" id="last_submission" name="last_submission" placeholder="Last submission" class="form-control" value="<%= @child.last_submission %>">
+      </div>
+
+      <!-- Label and input for notes -->
+      <div class="form-group">
+        <label for="notes" class="control-label">
+          Notes
+        </label>
+
+        <textarea id="notes" name="notes" placeholder="Notes" class="form-control" rows="3"><%= @child.notes %></textarea>
+      </div>
+
+      <!-- Label and input for family_id -->
+      <div class="form-group">
+        <label for="family_id" class="control-label">
+          Family
+        </label>
+
+        <input type="text" id="family_id" name="family_id" placeholder="Family" class="form-control" value="<%= @child.family_id %>">
+      </div>
+
+      <!-- Label and input for provider_id -->
+      <div class="form-group">
+        <label for="provider_id" class="control-label">
+          Provider
+        </label>
+
+        <input type="text" id="provider_id" name="provider_id" placeholder="Provider" class="form-control" value="<%= @child.provider_id %>">
+      </div>
+
+      <!-- Label and input for first_name -->
+      <div class="form-group">
+        <label for="first_name" class="control-label">
+          First name
+        </label>
+
+        <input type="text" id="first_name" name="first_name" placeholder="First name" class="form-control" value="<%= @child.first_name %>">
+      </div>
+
+      <!-- Label and input for last_name -->
+      <div class="form-group">
+        <label for="last_name" class="control-label">
+          Last name
+        </label>
+
+        <input type="text" id="last_name" name="last_name" placeholder="Last name" class="form-control" value="<%= @child.last_name %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Child
+      </button>
+      or
+      <a href="/children/<%= @child.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

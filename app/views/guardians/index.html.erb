@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    Guardians
+    <a href="/guardians/new" class="btn btn-lg btn-success">New Guardian</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Family</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @guardians.each do |guardian| %>
+      <tr>
+        <td><%= guardian.first_name %></td>
+        <td><%= guardian.last_name %></td>
+        <td><%= guardian.family_id %></td>
+        <td>
+          <a href="/guardians/<%= guardian.id %>" class="btn btn-primary">Show</a>
+          <a href="/guardians/<%= guardian.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_guardian/<%= guardian.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
