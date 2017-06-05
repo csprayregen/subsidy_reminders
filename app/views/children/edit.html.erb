@@ -1,13 +1,14 @@
 <!-- Validation failure messages -->
 <% if @child.errors.any? %>
-  <% @child.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @child.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
+<% if @child.provider_id == current_provider.id %>
 <div class="page-header">
   <h3>Edit <%= @child.first_name %> <%= @child.last_name %></h3>
 </div>
@@ -108,3 +109,7 @@
     </form>
   </div>
 </div>
+
+<% else %>
+  <h3>You can only view families who use your daycare. </h3>
+<% end %>

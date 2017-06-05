@@ -1,3 +1,7 @@
+
+<!-- if the current child's id is included in the current provider's list of child_ids -->
+
+<% if @child.provider_id == current_provider.id %>
 <div class="page-header">
   <h3><%= @child.first_name%> <%=@child.last_name%> </h3>
 </div>
@@ -42,3 +46,7 @@
     </div>
   </div>
 </div>
+
+<% else %>
+  <h3>You can only view families who use your daycare. </h3>
+<% end %>

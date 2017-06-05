@@ -8,9 +8,12 @@
 <div class="row">
   <div class="col-md-12">
     <% @families.each do |family| %>
+
+    <% if family.provider_id == current_provider.id %>
     <div>
       <h3><%= family.name %> Family <a href="/families/<%= family.id %>" class="btn btn-primary">Show</a> <a href="/families/<%= family.id %>/edit" class="btn btn-warning">Edit</a>     <a href="/delete_family/<%= family.id %>" class="btn btn-danger" rel="nofollow">Delete</a></h3>
     </div>
+    <% end %>  <!-- close: only write family name for this provider's families-->
 
     <h5>Children   <a href="/children/new" class="btn btn-success">New Child</a></h5>
     <table class="table table-striped table-hover">
@@ -21,7 +24,10 @@
         <th>Edit</th>
         <th>Delete</th>
       </tr>
+
       <% family.children.each do |child| %>
+
+      <% if child.provider_id == current_provider.id %>
       <tr>
         <td> <%= child.first_name %> </td>
         <td> <%= child.last_name %> </td>
@@ -35,7 +41,9 @@
           <a href="/delete_child/<%= child.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
-      <% end %>
+      <% end %> <!-- close loop: only give child info for children associated with a provider -->
+
+       <% end %> <!--close loop: print all children in this family -->
     </table>
 
     <h5>Guardians <a href="/guardians/new" class="btn btn-success">New Guardian</a> </h5>
@@ -47,7 +55,10 @@
         <th>Edit</th>
         <th>Delete</th>
       </tr>
+
       <% family.guardians.each do |guardian| %>
+
+      <% if guardian.family.provider_id == current_provider.id %>
       <tr>
         <td> <%= guardian.first_name %></td>
         <td><%= guardian.last_name %> </td>
@@ -61,13 +72,15 @@
           <a href="/delete_guardian/<%= guardian.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
-      <% end %>
+      <% end %> <!-- close loop: only give guardian info for guardians associated with a provider -->
+
+      <% end %> <!--close loop: print all guardians in this family -->
     </table>
 
 
 
 
-<% end %>
+     <% end %> <!--end looping through all families -->
 
-</div>
+  </div>
 </div>

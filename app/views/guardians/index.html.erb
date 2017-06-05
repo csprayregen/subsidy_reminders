@@ -16,6 +16,7 @@
       </tr>
 
       <% @guardians.each do |guardian| %>
+      <% if guardian.family.provider_id == current_provider.id %>
       <tr>
         <td><%= guardian.first_name %></td>
         <td><%= guardian.last_name %></td>
@@ -26,6 +27,7 @@
           <a href="/delete_guardian/<%= guardian.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
+      <% end %>
       <% end %>
     </table>
   </div>

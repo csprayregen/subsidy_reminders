@@ -1,6 +1,6 @@
 class ChildrenController < ApplicationController
   def index
-    @children = Child.all
+    @children = current_provider.children
 
     render("children/index.html.erb")
   end
@@ -12,7 +12,7 @@ class ChildrenController < ApplicationController
   end
 
   def urgent
-    @children = Child.all
+    @children = current_provider.children
     @today = Date.today
 
     render("children/urgent.html.erb")
