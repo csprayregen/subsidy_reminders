@@ -7,32 +7,67 @@
 
 <div class="row">
   <div class="col-md-12">
+    <% @families.each do |family| %>
+    <div>
+      <h3><%= family.name %> Family <a href="/families/<%= family.id %>" class="btn btn-primary">Show</a> <a href="/families/<%= family.id %>/edit" class="btn btn-warning">Edit</a>     <a href="/delete_family/<%= family.id %>" class="btn btn-danger" rel="nofollow">Delete</a></h3>
+    </div>
+
+    <h5>Children   <a href="/children/new" class="btn btn-success">New Child</a></h5>
     <table class="table table-striped table-hover">
       <tr>
-        <th>Family Name</th>
-        <th>Guardians</th>
-        <th>Children</th>
-        <th>Actions</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Show</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
-
-      <% @families.each do |family| %>
+      <% family.children.each do |child| %>
       <tr>
-        <td><%= family.name %></td>
-
-        <% family.guardians.each do |guardian| %>
-        <td> <%= guardian.first_name %> <%= guardian.last_name %> </td>
-        <% end %>
-
-
-        <td> <% family.children.each do |child| %> <%= child.first_name %> <%= child.last_name %>   <% end %> </td>
-    
+        <td> <%= child.first_name %> </td>
+        <td> <%= child.last_name %> </td>
         <td>
-          <a href="/families/<%= family.id %>" class="btn btn-primary">Show</a>
-          <a href="/families/<%= family.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_family/<%= family.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/children/<%= child.id %>" class="btn btn-primary">Show</a>
+        </td>
+        <td>
+          <a href="/children/<%= child.id %>/edit" class="btn btn-warning">Edit</a>
+        </td>
+        <td>
+          <a href="/delete_child/<%= child.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
       <% end %>
     </table>
-  </div>
+
+    <h5>Guardians <a href="/guardians/new" class="btn btn-success">New Guardian</a> </h5>
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Show</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <% family.guardians.each do |guardian| %>
+      <tr>
+        <td> <%= guardian.first_name %></td>
+        <td><%= guardian.last_name %> </td>
+        <td>
+          <a href="/guardians/<%= guardian.id %>" class="btn btn-primary">Show</a>
+        </td>
+        <td>
+          <a href="/guardians/<%= guardian.id %>/edit" class="btn btn-warning">Edit</a>
+        </td>
+        <td>
+          <a href="/delete_guardian/<%= guardian.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+
+
+
+
+<% end %>
+
+</div>
 </div>
