@@ -18,8 +18,14 @@
       <% @families.each do |family| %>
       <tr>
         <td><%= family.name %></td>
-        <td><%= family.guardians %></td>
-        <td><%= family.children.first_name %></td>
+
+        <% family.guardians.each do |guardian| %>
+        <td> <%= guardian.first_name %> <%= guardian.last_name %> </td>
+        <% end %>
+
+
+        <td> <% family.children.each do |child| %> <%= child.first_name %> <%= child.last_name %>   <% end %> </td>
+    
         <td>
           <a href="/families/<%= family.id %>" class="btn btn-primary">Show</a>
           <a href="/families/<%= family.id %>/edit" class="btn btn-warning">Edit</a>

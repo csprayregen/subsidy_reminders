@@ -39,10 +39,12 @@
       <!-- Label and input for family_id -->
       <div class="form-group">
         <label for="family_id" class="control-label">
-          Family
+          Family Name
         </label>
+      </div>
 
-        <input type="text" id="family_id" name="family_id" placeholder="Family" class="form-control" value="<%= @guardian.family_id %>">
+      <div class="form-group">
+        <%= select_tag("family_id", options_from_collection_for_select(Family.all, :id, :name, @guardian.family_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">

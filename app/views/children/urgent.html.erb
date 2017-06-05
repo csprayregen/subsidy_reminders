@@ -23,26 +23,26 @@
 
       <% @children.each do |child| %>
       <% if (child.approved_thru - @today) < 46 %>
-      <tr>
-        <td><%= child.family_id %></td>
-        <td><%= child.last_name %></td>
-        <td><%= child.first_name %></td>
-        <td><%= child.last_approval %></td>
-        <td><%= child.approved_thru %></td>
-        <td><%= child.last_denial %></td>
-        <td><%= child.last_submission %></td>
-        <td><%= child.family.guardians %></td>
-        <td><%= child.notes %></td>
-        <td>
-          <a href="/children/<%= child.id %>" class="btn btn-primary">Child details</a>
-          <a href="/children/<%= child.id %>/edit" class="btn btn-warning">Edit Child</a>
-          <a href="/delete_child/<%= child.id %>" class="btn btn-danger" rel="nofollow">Delete Child</a>
-        </td>
-      </tr>
-      <% end %>
-      <!-- if the approved through date is in less than 46 days, appear in the table -->
+        <tr>
+          <td><%= child.family_id %></td>
+          <td><%= child.last_name %></td>
+          <td><%= child.first_name %></td>
+          <td><%= child.last_approval %></td>
+          <td><%= child.approved_thru %></td>
+          <td><%= child.last_denial %></td>
+          <td><%= child.last_submission %></td>
+          <td><%= child.family.guardians %></td>
+          <td><%= child.notes %></td>
+          <td>
+            <a href="/children/<%= child.id %>" class="btn btn-primary">Child details</a>
+            <a href="/children/<%= child.id %>/edit" class="btn btn-warning">Edit Child</a>
+            <a href="/delete_child/<%= child.id %>" class="btn btn-danger" rel="nofollow">Delete Child</a>
+          </td>
+        </tr>
+        <% end %>
+        <!-- if the approved through date is in less than 46 days, appear in the table -->
 
-      <% end %>
-    </table>
+        <% end %>
+      </table>
+    </div>
   </div>
-</div>
