@@ -1,10 +1,14 @@
 <div class="page-header">
-  <h3>Child #<%= @child.id %></h3>
+  <h3><%= @child.first_name%> <%=@child.last_name%> </h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
+
+      <dt>Family name</dt>
+      <dd><%= @child.family.name %></dd>
+
       <dt>Last approval</dt>
       <dd><%= @child.last_approval %></dd>
 
@@ -17,20 +21,11 @@
       <dt>Last submission</dt>
       <dd><%= @child.last_submission %></dd>
 
+      <dt>Guardians</dt>
+      <dd>PLACEHOLDER</dd>
+
       <dt>Notes</dt>
       <dd><%= @child.notes %></dd>
-
-      <dt>Family</dt>
-      <dd><%= @child.family_id %></dd>
-
-      <dt>Provider</dt>
-      <dd><%= @child.provider_id %></dd>
-
-      <dt>First name</dt>
-      <dd><%= @child.first_name %></dd>
-
-      <dt>Last name</dt>
-      <dd><%= @child.last_name %></dd>
 
     </dl>
 

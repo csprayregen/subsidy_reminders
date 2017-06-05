@@ -11,6 +11,13 @@ class ChildrenController < ApplicationController
     render("children/show.html.erb")
   end
 
+  def urgent
+    @children = Child.all
+    @today = Date.today
+        
+    render("children/urgent.html.erb")
+  end
+
   def new
     @child = Child.new
 

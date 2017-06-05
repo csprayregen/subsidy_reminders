@@ -1,4 +1,5 @@
 class FamiliesController < ApplicationController
+
   def index
     @families = Family.all
 
@@ -21,7 +22,7 @@ class FamiliesController < ApplicationController
     @family = Family.new
 
     @family.provider_id = params[:provider_id]
-
+    @family.name = params[:name]
     save_status = @family.save
 
     if save_status == true
@@ -41,7 +42,7 @@ class FamiliesController < ApplicationController
     @family = Family.find(params[:id])
 
     @family.provider_id = params[:provider_id]
-
+    @family.name = params[:name]
     save_status = @family.save
 
     if save_status == true

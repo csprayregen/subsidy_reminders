@@ -12,7 +12,11 @@ Rails.application.routes.draw do
 
   # READ
   get "/children", :controller => "children", :action => "index"
+
+  get "/urgent", :controller => "children", :action => "urgent"
+
   get "/children/:id", :controller => "children", :action => "show"
+
 
   # UPDATE
   get "/children/:id/edit", :controller => "children", :action => "edit"

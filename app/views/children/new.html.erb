@@ -94,11 +94,8 @@
 
       <!-- Label and input for provider_id -->
       <div class="form-group">
-        <label for="provider_id" class="control-label">
-          Provider
-        </label>
 
-        <input type="text" id="provider_id" name="provider_id" placeholder="Provider" class="form-control" value="<%= @child.provider_id %>">
+        <input type="hidden" id="provider_id" name="provider_id" class="form-control" value="<%= current_provider.id %>">
       </div>
 
 

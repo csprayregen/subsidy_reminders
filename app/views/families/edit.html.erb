@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @family.errors.any? %>
-  <% @family.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @family.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
@@ -18,13 +18,12 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for provider_id -->
-      <div class="form-group">
-        <label for="provider_id" class="control-label">
-          Provider
-        </label>
+      <input type="hidden" id="provider_id" name="provider_id" class="form-control" value="<%= current_provider.id %>">
 
-        <input type="text" id="provider_id" name="provider_id" placeholder="Provider" class="form-control" value="<%= @family.provider_id %>">
+      <!-- Label and input for family name -->
+      <div class="form-group">
+
+        <input type="text" id="name" name="name" placeholder="Family Name" class="form-control" value="<%= @family.name %>">
       </div>
 
       <button class="btn btn-warning">
