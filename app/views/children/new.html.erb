@@ -46,7 +46,7 @@
       <div class="form-group">
         <%= select_tag("family_id", options_from_collection_for_select(Family.all, :id, :name, @child.family_id), :class => "form-control") %>
       </div>
-      
+
       <div>
         <small><a href="/families/new">Create New Family</a></small>
       </div>
@@ -57,7 +57,7 @@
           Last approval
         </label>
 
-        <input type="text" id="last_approval" name="last_approval" placeholder="Last approval" class="form-control" value="<%= @child.last_approval %>">
+        <input type="text" id="last_approval" name="last_approval" placeholder="YYYY-MM-DD" class="form-control" value="<%= @child.last_approval %>">
       </div>
 
       <!-- Label and input for approved_thru -->
@@ -66,7 +66,7 @@
           Approved thru
         </label>
 
-        <input type="text" id="approved_thru" name="approved_thru" placeholder="Approved thru" class="form-control" value="<%= @child.approved_thru %>">
+        <input type="text" id="approved_thru" name="approved_thru" placeholder="YYYY-MM-DD" class="form-control" value="<%= @child.approved_thru %>">
       </div>
 
       <!-- Label and input for last_denial -->
@@ -75,7 +75,7 @@
           Last denial
         </label>
 
-        <input type="text" id="last_denial" name="last_denial" placeholder="Last denial" class="form-control" value="<%= @child.last_denial %>">
+        <input type="text" id="last_denial" name="last_denial" placeholder="YYYY-MM-DD" class="form-control" value="<%= @child.last_denial %>">
       </div>
 
       <!-- Label and input for last_submission -->
@@ -84,7 +84,7 @@
           Last submission
         </label>
 
-        <input type="text" id="last_submission" name="last_submission" placeholder="Last submission" class="form-control" value="<%= @child.last_submission %>">
+        <input type="text" id="last_submission" name="last_submission" placeholder="YYYY-MM-DD" class="form-control" value="<%= @child.last_submission %>">
       </div>
 
       <!-- Label and input for notes -->

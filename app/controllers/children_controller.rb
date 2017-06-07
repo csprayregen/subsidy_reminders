@@ -8,6 +8,7 @@ class ChildrenController < ApplicationController
   def show
     @child = Child.find(params[:id])
     @guardian = Guardian.new
+    @sibling = Child.new
     render("children/show.html.erb")
   end
 
