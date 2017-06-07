@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @child.errors.any? %>
-  <% @child.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @child.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
@@ -45,6 +45,10 @@
 
       <div class="form-group">
         <%= select_tag("family_id", options_from_collection_for_select(Family.all, :id, :name, @child.family_id), :class => "form-control") %>
+      </div>
+      
+      <div>
+        <small><a href="/families/new">Create New Family</a></small>
       </div>
 
       <!-- Label and input for last_approval -->

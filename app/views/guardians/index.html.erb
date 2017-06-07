@@ -20,7 +20,7 @@
       <tr>
         <td><%= guardian.first_name %></td>
         <td><%= guardian.last_name %></td>
-        <td><%= guardian.family_id %></td>
+        <td><%= guardian.family.name %></td>
         <td>
           <a href="/guardians/<%= guardian.id %>" class="btn btn-primary">Show</a>
           <a href="/guardians/<%= guardian.id %>/edit" class="btn btn-warning">Edit</a>

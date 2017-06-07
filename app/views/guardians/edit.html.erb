@@ -1,16 +1,16 @@
 <!-- Validation failure messages -->
 <% if @guardian.errors.any? %>
-  <% @guardian.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @guardian.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <% if @guardian.family.provider_id == current_provider.id %>
 <div class="page-header">
-  <h3>Edit Guardian #<%= @guardian.id %></h3>
+  <h3>Edit <%= @guardian.first_name %> <%= @guardian.last_name %></h3>
 </div>
 
 <div class="row">
@@ -40,10 +40,12 @@
       <!-- Label and input for family_id -->
       <div class="form-group">
         <label for="family_id" class="control-label">
-          Family
+          Family Name
         </label>
 
-        <input type="text" id="family_id" name="family_id" placeholder="Family" class="form-control" value="<%= @guardian.family_id %>">
+        <div class="form-group">
+          <%= select_tag("family_id", options_from_collection_for_select(Family.all, :id, :name, @guardian.family_id), :class => "form-control") %>
+        </div>
       </div>
 
       <button class="btn btn-warning">
@@ -56,5 +58,5 @@
 </div>
 
 <% else %>
-    <h3>You can only view families who use your daycare. </h3>
+<h3>You can only view families who use your daycare. </h3>
 <% end %>
