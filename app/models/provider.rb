@@ -7,14 +7,13 @@ class Provider < ApplicationRecord
   has_many :children
   has_many :families
 
-  # validates :last_name, :length => { :minimum => 2, :maximum => 25 }
-  #
-  # validates :last_name, :presence => { :message => "Please enter your last name." }
-  #
-  # validates :first_name, :length => { :minimum => 2, :maximum => 25 }
-  #
-  # validates :first_name, :presence => { :message => "Please enter your first name" }
-  #
-  # validates :business_type, :inclusion => { :in => [ 'License Exempt', 'Licensed Home Daycare', 'Licensed Group Home' ] }
+  validates :last_name, :presence => { :message => "Please enter your last name." }
+
+  validates :first_name, :presence => { :message => "Please enter your first name" }
+
+  validates :business_type, :presence => true
+
+
+  # , :inclusion => { :in => [ 'License Exempt', 'Licensed Home Daycare', 'Licensed Group Home' ] }
 
 end
