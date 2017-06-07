@@ -1,3 +1,5 @@
+<% if @family.provider_id == current_provider.id %>
+
 <div class="page-header">
   <h3>Family #<%= @family.id %></h3>
 </div>
@@ -26,3 +28,7 @@
     </div>
   </div>
 </div>
+
+<% else %>
+  <h3>You can only view families who use your daycare. </h3>
+<% end %>

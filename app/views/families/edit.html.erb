@@ -1,3 +1,5 @@
+<% if @family.provider_id == current_provider.id %>
+
 <!-- Validation failure messages -->
 <% if @family.errors.any? %>
 <% @family.errors.full_messages.each do |message| %>
@@ -34,3 +36,7 @@
     </form>
   </div>
 </div>
+
+<% else %>
+  <h3>You can only view families who use your daycare. </h3>
+<% end %>
