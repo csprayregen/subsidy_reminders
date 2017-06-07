@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1>
-    Due Soon
+    Redeterminations Due Soon
   </h1>
 </div>
 
@@ -8,14 +8,10 @@
 <div class="row">
   <div class="col-md-12">
 
-
     <% @families.each do |family| %>
-    <% family.children.each do |child| %>
-    <% if child.approved_thru != nil %>
-    <% if (child.approved_thru - @today) < 46 %>
 
     <div>
-      <h3><%= family.name %> Family</h3>
+      <h4><%= family.name %> Family</h4>
     </div>
 
     <table class="table table-striped table-hover">
@@ -30,6 +26,9 @@
         <th>Actions</th>
       </tr>
 
+      <% family.children.each do |child| %>
+      <% if child.approved_thru != nil %>
+      <% if (child.approved_thru - @today) < 46 %>
 
       <tr>
         <td><%= child.last_name %></td>
@@ -38,7 +37,7 @@
         <td><%= child.approved_thru %></td>
         <td><%= child.last_denial %></td>
         <td><%= child.last_submission %></td>
-        <td><%= child.notes %></td>
+        <td><%= truncate(child.notes) %></td>
         <td>
           <a href="/children/<%= child.id %>" class="btn btn-primary">Child details</a>
           <a href="/children/<%= child.id %>/edit" class="btn btn-warning">Edit Child</a>
@@ -47,9 +46,10 @@
       </tr>
       <% end %>
       <% end %>
-      <% end %>
+
 
     </table>
+    <% end %>
     <% end %>
   </div>
 </div>

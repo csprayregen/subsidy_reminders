@@ -34,7 +34,7 @@
         <td><%= child.approved_thru %></td>
         <td><%= child.last_denial %></td>
         <td><%= child.last_submission %></td>
-        <td><%= child.notes %></td>
+        <td><%= truncate (child.notes) %></td>
         <td>
           <a href="/children/<%= child.id %>" class="btn btn-primary">Child details</a>
           <a href="/children/<%= child.id %>/edit" class="btn btn-warning">Edit Child</a>
