@@ -1,18 +1,19 @@
 class ChildrenController < ApplicationController
   def index
     @children = current_provider.children
-
+    @families = current_provider.families
     render("children/index.html.erb")
   end
 
   def show
     @child = Child.find(params[:id])
-
+    @guardian = Guardian.new
     render("children/show.html.erb")
   end
 
   def urgent
     @children = current_provider.children
+    @families = current_provider.families
     @today = Date.today
 
     render("children/urgent.html.erb")

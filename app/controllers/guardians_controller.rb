@@ -7,6 +7,7 @@ class GuardiansController < ApplicationController
 
   def show
     @guardian = Guardian.find(params[:id])
+    @child = Child.new
 
     render("guardians/show.html.erb")
   end

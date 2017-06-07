@@ -1,7 +1,7 @@
 <% if @guardian.family.provider_id == current_provider.id %>
 
 <div class="page-header">
-  <h3>Guardian #<%= @guardian.id %></h3>
+  <h3> <%= @guardian.first_name %> <%=@guardian.last_name %> (Guardian) </h3>
 </div>
 
 <div class="row">
@@ -14,7 +14,7 @@
       <dd><%= @guardian.last_name %></dd>
 
       <dt>Family</dt>
-      <dd><%= @guardian.family_id %></dd>
+      <dd> <a href="/families/<%=@guardian.family_id %>"><%= @guardian.family.name %></a> </dd>
 
     </dl>
 
@@ -32,6 +32,77 @@
   </div>
 </div>
 
-<% else %>
+
+<div>
+  <h6>Children</h6>
+  <ul>
+    <% @guardian.family.children.each do |child| %>
+    <li>
+      <a href="/children/<%= child.id %>"> <%= child.first_name %> <%= child.last_name %> </a> </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <h6>Add a child</h6>
+
+  <!-- Validation failure messages -->
+  <% if @child.errors.any? %>
+  <% @child.errors.full_messages.each do |message| %>
+  <div class="alert alert-dismissable alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <%= message %>
+  </div>
+  <% end %>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <form action="/create_child" method="post">
+        <!-- Hidden input for authenticity token to protect from forgery -->
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+        <!-- Label and input for first_name -->
+        <div class="form-group">
+          <label for="first_name" class="control-label">
+            First name
+          </label>
+
+          <input type="text" id="first_name" name="first_name" placeholder="First name" class="form-control" value="<%= @child.first_name %>">
+        </div>
+
+        <!-- Label and input for last_name -->
+        <div class="form-group">
+          <label for="last_name" class="control-label">
+            Last name
+          </label>
+
+          <input type="text" id="last_name" name="last_name" placeholder="Last name" class="form-control" value="<%= @child.last_name %>">
+        </div>
+
+        <!-- Label and input for family  -->
+        <div class="form-group">
+
+          <input type="hidden" id="family_id" name="family_id" class="form-control" value="<%= @guardian.family_id %>">
+        </div>
+
+        <!-- Label and input for provider_id -->
+        <div class="form-group">
+
+          <input type="hidden" id="provider_id" name="provider_id" class="form-control" value="<%= current_provider.id %>">
+        </div>
+
+
+
+        <button class="btn btn-success">
+          Create Child
+        </button>
+        or
+        <a href="/children">Cancel</a>
+      </form>
+    </div>
+  </div>
+
+
+  <% else %>
   <h3>You can only view families who use your daycare. </h3>
-<% end %>
+  <% end %>
