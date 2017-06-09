@@ -13,9 +13,20 @@ class ChildrenController < ApplicationController
   end
 
   def urgent
-    @children = current_provider.children
-    @families = current_provider.families
     @today = Date.today
+
+    future_families = []
+    current_provider.families.each do |family|
+      family.children.each do |child|
+        if child.approved_thru != nil && (child.approved_thru - @today) < 46 && (child.approved_thru - @today) > 0
+          future_families.push(family)
+        end
+      end
+    end
+
+    @children = current_provider.children
+    @families = future_families.uniq
+
 
     render("children/urgent.html.erb")
   end

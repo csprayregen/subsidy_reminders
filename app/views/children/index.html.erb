@@ -11,39 +11,43 @@
     <% @families.each do |family| %>
 
     <div>
-      <h3><%= family.name %> Family</h3>
-    </div>
-
-    <table class="table table-striped table-hover">
-      <tr>
-        <th>Last name</th>
-        <th>First name</th>
-        <th>Last approval</th>
-        <th>Approved thru</th>
-        <th>Last denial</th>
-        <th>Last submission</th>
-        <th>Notes</th>
-        <th>Actions</th>
-      </tr>
-
-      <% family.children.each do |child| %>
-      <tr>
-        <td><%= child.last_name %></td>
-        <td><%= child.first_name %></td>
-        <td><%= child.last_approval %></td>
-        <td><%= child.approved_thru %></td>
-        <td><%= child.last_denial %></td>
-        <td><%= child.last_submission %></td>
-        <td><%= truncate (child.notes) %></td>
-        <td>
-          <a href="/children/<%= child.id %>" class="btn btn-primary">Child details</a>
-          <a href="/children/<%= child.id %>/edit" class="btn btn-warning">Edit Child</a>
-          <a href="/delete_child/<%= child.id %>" class="btn btn-danger" rel="nofollow">Delete Child</a>
-        </td>
-      </tr>
-      <% end %>
-
-    </table>
-    <% end %>
+      <h4>
+        <a
+        href="/families/<%= family.id %>">  <%= family.name %> Family
+      </a>
+    </h4>
   </div>
+
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>Last name</th>
+      <th>First name</th>
+      <th>Last approval</th>
+      <th>Approved thru</th>
+      <th>Last denial</th>
+      <th>Last submission</th>
+      <th>Notes</th>
+      <th>Actions</th>
+    </tr>
+
+    <% family.children.each do |child| %>
+    <tr>
+      <td><%= child.last_name %></td>
+      <td><%= child.first_name %></td>
+      <td><%= child.last_approval %></td>
+      <td><%= child.approved_thru %></td>
+      <td><%= child.last_denial %></td>
+      <td><%= child.last_submission %></td>
+      <td><%= truncate (child.notes) %></td>
+      <td>
+        <a href="/children/<%= child.id %>" class="btn btn-primary">Child details</a>
+        <a href="/children/<%= child.id %>/edit" class="btn btn-warning">Edit Child</a>
+        <a href="/delete_child/<%= child.id %>" class="btn btn-danger" rel="nofollow">Delete Child</a>
+      </td>
+    </tr>
+    <% end %>
+
+  </table>
+  <% end %>
+</div>
 </div>
